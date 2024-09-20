@@ -1,6 +1,8 @@
-// ignore_for_file: file_names
-
 import 'package:flutter/material.dart';
+import '../pages/Reports.dart';
+import '../pages/Competition.dart';
+import '../pages/Training.dart';
+import '../pages/Comets.dart';
 
 class NavBar extends StatelessWidget {
   const NavBar({super.key});
@@ -21,63 +23,83 @@ class NavItem extends StatefulWidget {
 class _NavItemState extends State<NavItem> {
   int _selectedIndex = 2;
 
-  static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-
-  static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Training Page',
-      style: optionStyle,
-    ),
-    Text(
-      'Competition Page',
-      style: optionStyle,
-    ),
-    Text(
-      'DashBoard',
-      style: optionStyle,
-    ),
-    Text(
-      'Reports Page',
-      style: optionStyle,
-    ),
-    Text(
-      'COMETS Page',
-      style: optionStyle,
-    ),
-  ];
-
-  void _showPopup(
-      BuildContext context, String title, String content1, String content2) {
+  void _showTrainingPopup(BuildContext context) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text(title),
+          title: const Text('Training'),
           content: Column(
             mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(content1),
-              const SizedBox(
-                height: 10,
+            children: <Widget>[
+              ListTile(
+                title: const Text('Goals'),
+                onTap: () {
+                  // Navigator.of(context).pop(); // Close the popup
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const TrainingPage(option: 'Goals'),
+                    ),
+                  );
+                },
               ),
-              Text(content2),
+              ListTile(
+                title: const Text('Drills'),
+                onTap: () {
+                  // Navigator.of(context).pop(); // Close the popup
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          const TrainingPage(option: 'Drills'),
+                    ),
+                  );
+                },
+              ),
+              ListTile(
+                title: const Text('Techniques'),
+                onTap: () {
+                  // Navigator.of(context).pop(); // Close the popup
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          const TrainingPage(option: 'Techniques'),
+                    ),
+                  );
+                },
+              ),
+              ListTile(
+                title: const Text('Fitness'),
+                onTap: () {
+                  // Navigator.of(context).pop(); // Close the popup
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          const TrainingPage(option: 'Fitness'),
+                    ),
+                  );
+                },
+              ),
             ],
           ),
           actions: <Widget>[
             TextButton.icon(
-              onPressed: () {
-                _showInfoText(context);
-              },
-              icon: const Icon(Icons.info_outlined),
+              icon: const Icon(Icons.info_outline),
               label: const Text('Info'),
+              onPressed: () {
+                // Navigator.of(context).pop();  // Close first dialog
+                _showTrainingInfo(context);
+              },
             ),
             TextButton.icon(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              icon: const Icon(Icons.close_rounded),
+              icon: const Icon(Icons.close),
               label: const Text('Close'),
+              onPressed: () {
+                Navigator.of(context).pop(); // Close popup
+              },
             ),
           ],
         );
@@ -85,20 +107,324 @@ class _NavItemState extends State<NavItem> {
     );
   }
 
-  void _showInfoText(BuildContext context) {
+  void _showTrainingInfo(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Training Info'),
+          content: const Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text('Goals: Set and track your goals.'),
+              Text('Drills: Practice specific drills.'),
+              Text('Techniques: Improve your techniques.'),
+              Text('Fitness: Track your fitness levels.'),
+            ],
+          ),
+          actions: <Widget>[
+            TextButton.icon(
+              icon: const Icon(Icons.close),
+              label: const Text('Close'),
+              onPressed: () {
+                Navigator.of(context).pop(); // Close info dialog
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void _showCometsPopup(BuildContext context) {
     showDialog(
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: const Text('Info'),
-            content: const Text('info text...'),
+            title: const Text('COMETS'),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                ListTile(
+                  title: const Text('Rally Tracker'),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            const CometsPage(option: 'Rally Tracker'),
+                      ),
+                    );
+                  },
+                ),
+                ListTile(
+                  title: const Text('Swing BioMechanics'),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            const CometsPage(option: 'Swing BioMechanics'),
+                      ),
+                    );
+                  },
+                ),
+                ListTile(
+                  title: const Text('Foot Work'),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            const CometsPage(option: 'Foot Work'),
+                      ),
+                    );
+                  },
+                ),
+                ListTile(
+                  title: const Text('Energy Metrics'),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            const CometsPage(option: 'Energy Metrics'),
+                      ),
+                    );
+                  },
+                ),
+              ],
+            ),
             actions: <Widget>[
               TextButton.icon(
+                icon: const Icon(Icons.info_outline),
+                label: const Text('Info'),
+                onPressed: () {
+                  _showCometsInfo(context);
+                },
+              ),
+              TextButton.icon(
+                icon: const Icon(Icons.close),
+                label: const Text('Close'),
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
-                icon: const Icon(Icons.close_sharp),
+              ),
+            ],
+          );
+        });
+  }
+
+  void _showCometsInfo(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: const Text('COMETS Info'),
+            content: const Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(''),
+                Text(''),
+                Text(''),
+                Text(''),
+              ],
+            ),
+            actions: <Widget>[
+              TextButton.icon(
+                icon: const Icon(Icons.close),
                 label: const Text('Close'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              )
+            ],
+          );
+        });
+  }
+
+  void _showReportsPopup(BuildContext context) {
+ showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: const Text('Reports'),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                ListTile(
+                  title: const Text('Match Reports'),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            const ReportsPage(option: 'Match Reports'),
+                      ),
+                    );
+                  },
+                ),
+                ListTile(
+                  title: const Text('Fitness Evaluation Report'),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            const ReportsPage(option: 'Fitness Evaluation Report'),
+                      ),
+                    );
+                  },
+                ),
+                ListTile(
+                  title: const Text('Self Assessment Report'),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            const ReportsPage(option: 'Self Assessment Report'),
+                      ),
+                    );
+                  },
+                ),
+                ListTile(
+                  title: const Text('LeaderBoard'),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            const ReportsPage(option: 'LeaderBoard'),
+                      ),
+                    );
+                  },
+                ),
+              ],
+            ),
+            actions: <Widget>[
+              TextButton.icon(
+                icon: const Icon(Icons.info_outline),
+                label: const Text('Info'),
+                onPressed: () {
+                  _showReportsInfo(context);
+                },
+              ),
+              TextButton.icon(
+                icon: const Icon(Icons.close),
+                label: const Text('Close'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          );
+        });
+  }
+
+  void _showReportsInfo(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: const Text('Reports Info'),
+            content: const Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(''),
+                Text(''),
+                Text(''),
+                Text(''),
+              ],
+            ),
+            actions: <Widget>[
+              TextButton.icon(
+                icon: const Icon(Icons.close),
+                label: const Text('Close'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              )
+            ],
+          );
+        });
+  }
+
+  void _showCompetitionPopup(BuildContext context) {
+     showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: const Text('Competition'),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                ListTile(
+                  title: const Text('Match Preparation & Score Update'),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            const CompetitionPage(option: 'Match Preparation & Score Update'),
+                      ),
+                    );
+                  },
+                ),
+                ListTile(
+                  title: const Text('Match Analysis'),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            const CompetitionPage(option: 'Match Analysis'),
+                      ),
+                    );
+                  },
+                ),
+              ],
+            ),
+            actions: <Widget>[
+              TextButton.icon(
+                icon: const Icon(Icons.info_outline),
+                label: const Text('Info'),
+                onPressed: () {
+                  _showCompetitionInfo(context);
+                },
+              ),
+              TextButton.icon(
+                icon: const Icon(Icons.close),
+                label: const Text('Close'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          );
+        });
+  }
+
+  void _showCompetitionInfo(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: const Text('Competition Info'),
+            content: const Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(''),
+                Text(''),
+              ],
+            ),
+            actions: <Widget>[
+              TextButton.icon(
+                icon: const Icon(Icons.close),
+                label: const Text('Close'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
               )
             ],
           );
@@ -106,28 +432,15 @@ class _NavItemState extends State<NavItem> {
   }
 
   void _onItemTapped(int index) {
-    if (index != 2) {
-      String title = '';
-      String content1 = '';
-      String content2 = '';
-      if (index == 0) {
-        title = 'Training';
-        content1 = 'Goals';
-        content2 = 'Drills';
-      } else if (index == 1) {
-        title = 'Competition';
-        content1 = 'Tournaments';
-        content2 = 'Practice';
-      } else if (index == 3) {
-        title = 'Reports';
-        content1 = 'Match report';
-        content2 = 'Leaderboard';
-      } else if (index == 4) {
-        title = 'COMETS';
-        content1 = 'Rally tracker';
-        content2 = 'Footwork';
-      }
-      _showPopup(context, title, content1, content2);
+    if (index == 0) {
+      // Now calling the external showTrainingPopup function
+      _showTrainingPopup(context);
+    } else if (index == 1) {
+      _showCompetitionPopup(context);
+    } else if (index == 3) {
+      _showReportsPopup(context);
+    } else if (index == 4) {
+      _showCometsPopup(context);
     } else {
       setState(() {
         _selectedIndex = index;
@@ -140,7 +453,10 @@ class _NavItemState extends State<NavItem> {
     return Scaffold(
       body: Center(
         child: _selectedIndex == 2
-            ? _widgetOptions.elementAt(_selectedIndex)
+            ? const Text(
+                'Home Page',
+                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+              )
             : const SizedBox.shrink(),
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -148,12 +464,10 @@ class _NavItemState extends State<NavItem> {
           BottomNavigationBarItem(
             icon: Icon(Icons.sports_tennis_outlined),
             label: 'Training',
-            // backgroundColor: Colors.lightGreen,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.games_outlined),
             label: 'Competition',
-            // backgroundColor: Color.fromARGB(255, 255, 81, 69),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
@@ -163,12 +477,10 @@ class _NavItemState extends State<NavItem> {
           BottomNavigationBarItem(
             icon: Icon(Icons.edit_note_sharp),
             label: 'Reports',
-            // backgroundColor: Colors.yellow,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.stadium_outlined),
             label: 'COMETS',
-            // backgroundColor: Colors.orange,
           ),
         ],
         currentIndex: _selectedIndex,

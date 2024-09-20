@@ -20,7 +20,8 @@ class HomeScreen extends StatelessWidget {
             //   'Welcome!!! \n'
             //   'Champion',
             //   style: Theme.of(context).textTheme.displayMedium,
-            // )),
+            // )
+            // ),
             Expanded(
               child: NavBar(),
             ),
