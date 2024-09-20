@@ -34,7 +34,7 @@ class _NavItemState extends State<NavItem> {
       style: optionStyle,
     ),
     Text(
-      'Home Page',
+      'DashBoard',
       style: optionStyle,
     ),
     Text(

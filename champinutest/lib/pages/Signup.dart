@@ -32,9 +32,6 @@ class _SignUpFormState extends State<SignUpForm> {
   final _firstNameController = TextEditingController();
   final _lastNameController = TextEditingController();
   final _userNameController = TextEditingController();
-  // final _emailController = TextEditingController();
-  // final _passwordController = PasswordInputElement();
-  // final _phoneNumberController = NumberInputElement();
 
   double _formProgress = 0;
 
