@@ -3,6 +3,8 @@ import '../pages/Reports.dart';
 import '../pages/Competition.dart';
 import '../pages/Training.dart';
 import '../pages/Comets.dart';
+import '../section/Goals.dart';
+import '../section/SelfAssessement.dart';
 
 class NavBar extends StatelessWidget {
   const NavBar({super.key});
@@ -39,7 +41,7 @@ class _NavItemState extends State<NavItem> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const TrainingPage(option: 'Goals'),
+                      builder: (context) => const GoalPage(),
                     ),
                   );
                 },
@@ -77,8 +79,7 @@ class _NavItemState extends State<NavItem> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) =>
-                          const TrainingPage(option: 'Fitness'),
+                      builder: (context) => const SelfAssessment(),
                     ),
                   );
                 },
@@ -244,7 +245,7 @@ class _NavItemState extends State<NavItem> {
   }
 
   void _showReportsPopup(BuildContext context) {
- showDialog(
+    showDialog(
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
@@ -270,8 +271,8 @@ class _NavItemState extends State<NavItem> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) =>
-                            const ReportsPage(option: 'Fitness Evaluation Report'),
+                        builder: (context) => const ReportsPage(
+                            option: 'Fitness Evaluation Report'),
                       ),
                     );
                   },
@@ -351,7 +352,7 @@ class _NavItemState extends State<NavItem> {
   }
 
   void _showCompetitionPopup(BuildContext context) {
-     showDialog(
+    showDialog(
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
@@ -365,8 +366,8 @@ class _NavItemState extends State<NavItem> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) =>
-                            const CompetitionPage(option: 'Match Preparation & Score Update'),
+                        builder: (context) => const CompetitionPage(
+                            option: 'Match Preparation & Score Update'),
                       ),
                     );
                   },

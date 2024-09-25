@@ -1,3 +1,6 @@
+import 'package:champinutest/sidebar/sidebar_goals.dart';
+import 'package:champinutest/sidebar/sidebar_physique.dart';
+
 import 'Detailspage.dart';
 import 'package:flutter/material.dart';
 // import 'package:flutter/widgets.dart';
@@ -38,7 +41,7 @@ class Sidebar extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const DetailsPage(title: 'My Goals'),
+                    builder: (context) => const SidebarGoal(),
                   ),
                 );
               },
@@ -63,7 +66,7 @@ class Sidebar extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) =>
-                        const DetailsPage(title: 'My Physique'),
+                        const SidebarPhysique(),
                   ),
                 );
               },

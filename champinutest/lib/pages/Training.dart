@@ -10,9 +10,11 @@ class TrainingPage extends StatelessWidget {
       appBar: AppBar(
         title: Text(option),
       ),
-      body:  Center(
-        child: Text('$option page', style: const TextStyle(fontSize: 25),)
-      ),
+      body: Center(
+          child: Text(
+        '$option page',
+        style: const TextStyle(fontSize: 25),
+      )),
     );
   }
 }
