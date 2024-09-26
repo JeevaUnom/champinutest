@@ -1,3 +1,4 @@
+import 'package:champinutest/reports/Match_report.dart';
 import 'package:flutter/material.dart';
 import '../pages/Reports.dart';
 import '../pages/Competition.dart';
@@ -73,7 +74,7 @@ class _NavItemState extends State<NavItem> {
                 },
               ),
               ListTile(
-                title: const Text('Fitness'),
+                title: const Text('Fitness Self Assessment'),
                 onTap: () {
                   // Navigator.of(context).pop(); // Close the popup
                   Navigator.push(
@@ -260,7 +261,7 @@ class _NavItemState extends State<NavItem> {
                       context,
                       MaterialPageRoute(
                         builder: (context) =>
-                            const ReportsPage(option: 'Match Reports'),
+                            const MatchReport(),
                       ),
                     );
                   },

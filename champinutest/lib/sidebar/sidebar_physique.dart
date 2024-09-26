@@ -141,6 +141,8 @@ class _PhysiqueDialogState extends State<PhysiqueDialog> {
   late TextEditingController _heightController;
   late TextEditingController _weightController;
   late DateTime _selectedDate;
+  final _formKey = GlobalKey<FormState>();
+
   @override
   void initState() {
     super.initState();
@@ -169,44 +171,59 @@ class _PhysiqueDialogState extends State<PhysiqueDialog> {
     return AlertDialog(
       title: const Text('Add Physique Details'),
       content: SingleChildScrollView(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            Row(
-              children: [
-                Expanded(
-                    child: TextFormField(
-                  readOnly: true,
-                  decoration: InputDecoration(
-                    labelText: 'Measured on',
-                    suffixIcon: IconButton(
-                      icon: const Icon(Icons.calendar_today),
-                      onPressed: () => _selectDate(context),
+        child: Form(
+          key: _formKey,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              Row(
+                children: [
+                  Expanded(
+                      child: TextFormField(
+                    readOnly: true,
+                    decoration: InputDecoration(
+                      labelText: 'Measured on',
+                      suffixIcon: IconButton(
+                        icon: const Icon(Icons.calendar_today),
+                        onPressed: () => _selectDate(context),
+                      ),
                     ),
-                  ),
-                  controller: TextEditingController(
-                    text: DateFormat('dd MMM yyyy').format(_selectedDate),
-                  ),
-                ))
-              ],
-            ),
-            const SizedBox(
-              height: 16.0,
-            ),
-            TextFormField(
-              controller: _heightController,
-              keyboardType: TextInputType.number,
-              decoration: const InputDecoration(labelText: 'Height in CMs'),
-            ),
-            const SizedBox(
-              height: 16.0,
-            ),
-            TextFormField(
-              controller: _weightController,
-              keyboardType: TextInputType.number,
-              decoration: const InputDecoration(labelText: 'Weight in KGs'),
-            ),
-          ],
+                    controller: TextEditingController(
+                      text: DateFormat('dd MMM yyyy').format(_selectedDate),
+                    ),
+                  ))
+                ],
+              ),
+              const SizedBox(
+                height: 16.0,
+              ),
+              TextFormField(
+                controller: _heightController,
+                keyboardType: TextInputType.number,
+                decoration: const InputDecoration(labelText: 'Height in CMs'),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Enter Height';
+                  }
+                  return null;
+                },
+              ),
+              const SizedBox(
+                height: 16.0,
+              ),
+              TextFormField(
+                controller: _weightController,
+                keyboardType: TextInputType.number,
+                decoration: const InputDecoration(labelText: 'Weight in KGs'),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Enter Weight';
+                  }
+                  return null;
+                },
+              ),
+            ],
+          ),
         ),
       ),
       actions: <Widget>[
@@ -219,11 +236,13 @@ class _PhysiqueDialogState extends State<PhysiqueDialog> {
         TextButton(
           child: const Text('Add'),
           onPressed: () {
-            String height = _heightController.text;
-            String weight = _weightController.text;
-            String date = DateFormat('dd MMM yyyy').format(_selectedDate);
-            widget.onSave(date, height, weight);
-            Navigator.of(context).pop();
+            if (_formKey.currentState!.validate()) {
+              String height = _heightController.text;
+              String weight = _weightController.text;
+              String date = DateFormat('dd MMM yyyy').format(_selectedDate);
+              widget.onSave(date, height, weight);
+              Navigator.of(context).pop();
+            }
           },
         )
       ],
