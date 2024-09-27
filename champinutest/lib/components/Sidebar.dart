@@ -3,7 +3,6 @@ import 'package:champinutest/sidebar/sidebar_physique.dart';
 
 import 'Detailspage.dart';
 import 'package:flutter/material.dart';
-// import 'package:flutter/widgets.dart';
 
 class Sidebar extends StatelessWidget {
   const Sidebar({super.key});

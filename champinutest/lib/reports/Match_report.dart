@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
 // import '../sidebar/sidebar_goals.dart';
 
@@ -160,11 +159,19 @@ class _ReportPageState extends State<ReportPage> {
   DateTime? toDate;
 
   Future<void> _selectDate(BuildContext context, bool isFromDate) async {
+    final DateTime initialDate =
+        isFromDate ? (fromDate ?? DateTime.now()) : (toDate ?? DateTime.now());
+
+    final DateTime firstDate =
+        isFromDate ? DateTime(2024) : (fromDate ?? DateTime(2024));
+    final DateTime lastDate =
+        isFromDate ? (toDate ?? DateTime.now()) : DateTime.now();
+
     final DateTime? picked = await showDatePicker(
         context: context,
-        initialDate: DateTime.now(),
-        firstDate: DateTime(2024),
-        lastDate: DateTime.now());
+        initialDate: initialDate,
+        firstDate: firstDate,
+        lastDate: lastDate);
     if (picked != null) {
       setState(() {
         if (isFromDate) {
@@ -244,7 +251,7 @@ class _ReportPageState extends State<ReportPage> {
         const Text('Select Player'),
         Center(
             child: DropdownButton(
-                value: dropdownValue,
+                value: dropdownValue1,
                 icon: const Icon(Icons.keyboard_arrow_down),
                 hint: const Text('Select Player'),
                 items: players.map((String player) {
@@ -258,7 +265,7 @@ class _ReportPageState extends State<ReportPage> {
                     dropdownValue1 = newValue!;
                   });
                 })),
-        if (dropdownValue == null)
+        if (dropdownValue1 == null)
           const Center(
             child: Padding(
               padding: EdgeInsets.all(20.0),
@@ -304,21 +311,23 @@ class _ReportPageState extends State<ReportPage> {
         ),
         const SizedBox(height: 20),
         const Text('Reports'),
-        DropdownButton(
-            value: dropdownValue2,
-            icon: const Icon(Icons.keyboard_arrow_down),
-            hint: const Text('Select Report Type'),
-            items: reportOptions.map((String report) {
-              return DropdownMenuItem(
-                value: report,
-                child: Text(report),
-              );
-            }).toList(),
-            onChanged: (String? newValue) {
-              setState(() {
-                dropdownValue2 = newValue!;
-              });
-            }),
+        Center(
+          child: DropdownButton(
+              value: dropdownValue2,
+              icon: const Icon(Icons.keyboard_arrow_down),
+              hint: const Text('Select Report Type'),
+              items: reportOptions.map((String report) {
+                return DropdownMenuItem(
+                  value: report,
+                  child: Text(report),
+                );
+              }).toList(),
+              onChanged: (String? newValue) {
+                setState(() {
+                  dropdownValue2 = newValue!;
+                });
+              }),
+        ),
         if (dropdownValue2 == null)
           const Center(
             // ignore: unnecessary_const

@@ -4,8 +4,8 @@ import '../pages/Reports.dart';
 import '../pages/Competition.dart';
 import '../pages/Training.dart';
 import '../pages/Comets.dart';
-import '../section/Goals.dart';
-import '../section/SelfAssessement.dart';
+import '../training/Goals.dart';
+import '../training/SelfAssessment.dart';
 
 class NavBar extends StatelessWidget {
   const NavBar({super.key});
@@ -50,7 +50,7 @@ class _NavItemState extends State<NavItem> {
               ListTile(
                 title: const Text('Drills'),
                 onTap: () {
-                  // Navigator.of(context).pop(); // Close the popup
+                  // Navigator.of(context).pop();
                   Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -63,7 +63,7 @@ class _NavItemState extends State<NavItem> {
               ListTile(
                 title: const Text('Techniques'),
                 onTap: () {
-                  // Navigator.of(context).pop(); // Close the popup
+                  // Navigator.of(context).pop();
                   Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -76,7 +76,7 @@ class _NavItemState extends State<NavItem> {
               ListTile(
                 title: const Text('Fitness Self Assessment'),
                 onTap: () {
-                  // Navigator.of(context).pop(); // Close the popup
+                  // Navigator.of(context).pop();
                   Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -92,7 +92,7 @@ class _NavItemState extends State<NavItem> {
               icon: const Icon(Icons.info_outline),
               label: const Text('Info'),
               onPressed: () {
-                // Navigator.of(context).pop();  // Close first dialog
+                // Navigator.of(context).pop();
                 _showTrainingInfo(context);
               },
             ),
@@ -100,7 +100,7 @@ class _NavItemState extends State<NavItem> {
               icon: const Icon(Icons.close),
               label: const Text('Close'),
               onPressed: () {
-                Navigator.of(context).pop(); // Close popup
+                Navigator.of(context).pop();
               },
             ),
           ],
@@ -129,7 +129,7 @@ class _NavItemState extends State<NavItem> {
               icon: const Icon(Icons.close),
               label: const Text('Close'),
               onPressed: () {
-                Navigator.of(context).pop(); // Close info dialog
+                Navigator.of(context).pop();
               },
             ),
           ],
@@ -260,8 +260,7 @@ class _NavItemState extends State<NavItem> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) =>
-                            const MatchReport(),
+                        builder: (context) => const MatchReport(),
                       ),
                     );
                   },
@@ -435,7 +434,6 @@ class _NavItemState extends State<NavItem> {
 
   void _onItemTapped(int index) {
     if (index == 0) {
-      // Now calling the external showTrainingPopup function
       _showTrainingPopup(context);
     } else if (index == 1) {
       _showCompetitionPopup(context);
@@ -453,14 +451,7 @@ class _NavItemState extends State<NavItem> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: _selectedIndex == 2
-            ? const Text(
-                'Home Page',
-                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-              )
-            : const SizedBox.shrink(),
-      ),
+      body: Center(),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
