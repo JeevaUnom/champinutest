@@ -1,7 +1,8 @@
+import 'package:champinutest/sidebar/sidebar_gallery.dart';
 import 'package:champinutest/sidebar/sidebar_goals.dart';
 import 'package:champinutest/sidebar/sidebar_physique.dart';
-
-import 'Detailspage.dart';
+import 'package:champinutest/sidebar/sidebar_tennisTerms.dart';
+import '../sidebar/Detailspage.dart';
 import 'package:flutter/material.dart';
 
 class Sidebar extends StatelessWidget {
@@ -16,7 +17,7 @@ class Sidebar extends StatelessWidget {
             const UserAccountsDrawerHeader(
                 currentAccountPicture: CircleAvatar(),
                 accountName: Text('Jeeva'),
-                accountEmail: Text('jeevass@gmail.com')),
+                accountEmail: Text('jeevachampinu@gmail.com')),
             const Divider(
               height: 0.8,
             ),
@@ -64,8 +65,31 @@ class Sidebar extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) =>
-                        const SidebarPhysique(),
+                    builder: (context) => const SidebarPhysique(),
+                  ),
+                );
+              },
+            ),
+            ListTile(
+              title: const Text('My Gallery'),
+              leading: const Icon(Icons.photo),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => GalleryPage(),
+                  ),
+                );
+              },
+            ),
+            ListTile(
+              title: const Text('Tennis Terms'),
+              leading: const Icon(Icons.sports_tennis_sharp),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => TennisTerms(),
                   ),
                 );
               },

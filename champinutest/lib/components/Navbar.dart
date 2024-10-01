@@ -1,5 +1,6 @@
 import 'package:champinutest/reports/Match_report.dart';
 import 'package:flutter/material.dart';
+import '../competition/competition_score.dart';
 import '../pages/Reports.dart';
 import '../pages/Competition.dart';
 import '../pages/Training.dart';
@@ -366,8 +367,8 @@ class _NavItemState extends State<NavItem> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const CompetitionPage(
-                            option: 'Match Preparation & Score Update'),
+                        builder: (context) => const ScoreTracker(
+                            ),
                       ),
                     );
                   },
@@ -451,7 +452,7 @@ class _NavItemState extends State<NavItem> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(),
+      body:const  Center(),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(

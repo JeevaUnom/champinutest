@@ -1,6 +1,7 @@
 // import 'dart:js';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 
 class SidebarPhysique extends StatefulWidget {
@@ -199,7 +200,11 @@ class _PhysiqueDialogState extends State<PhysiqueDialog> {
               ),
               TextFormField(
                 controller: _heightController,
-                keyboardType: TextInputType.number,
+                keyboardType:
+                    const TextInputType.numberWithOptions(decimal: true),
+                inputFormatters: [
+                  FilteringTextInputFormatter.allow(RegExp(r'^\d+\.?\d*'))
+                ],
                 decoration: const InputDecoration(labelText: 'Height in CMs'),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -213,7 +218,11 @@ class _PhysiqueDialogState extends State<PhysiqueDialog> {
               ),
               TextFormField(
                 controller: _weightController,
-                keyboardType: TextInputType.number,
+                keyboardType:
+                    const TextInputType.numberWithOptions(decimal: true),
+                inputFormatters: [
+                  FilteringTextInputFormatter.allow(RegExp(r'^\d+\.?\d*'))
+                ],
                 decoration: const InputDecoration(labelText: 'Weight in KGs'),
                 validator: (value) {
                   if (value == null || value.isEmpty) {

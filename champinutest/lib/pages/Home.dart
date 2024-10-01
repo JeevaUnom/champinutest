@@ -12,21 +12,24 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('ChampinU'),
         backgroundColor: Colors.cyan,
+        actions: [IconButton(onPressed: () {}, icon: Icon(Icons.search))],
       ),
+      drawer: const Sidebar(),
       body: const SafeArea(
         child: Column(
           children: [
             SizedBox(
               height: 190,
               child: Row(
-                mainAxisAlignment:
-                    MainAxisAlignment.spaceEvenly, // Distribute charts evenly
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   PieChartCard(title: 'Training'),
-                  PieChartCard(title: 'Practice Match'),
+                  PieChartCard(title: 'Practice '),
                 ],
               ),
             ),
+            Spacer(),
+            Spacer(),
             Spacer(),
             ListTileBorder(title: 'Tactical'),
             ListTileBorder(title: 'Technical'),
@@ -38,7 +41,6 @@ class HomeScreen extends StatelessWidget {
           ],
         ),
       ),
-      drawer: const Sidebar(),
     );
   }
 }
@@ -52,11 +54,11 @@ class PieChartCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        // Spacer(),
+        const SizedBox(height: 8.0),
         Text(
           title,
-          style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
         ),
-        const SizedBox(height: 8.0),
         Container(
           height: 150,
           width: 150,
@@ -137,20 +139,17 @@ class ListTileBorder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(
-          vertical: 4.0, horizontal: 16.0), // Margin between list items
+      margin: const EdgeInsets.symmetric(vertical: 4.0, horizontal: 16.0),
       decoration: BoxDecoration(
         border: Border.all(
           color: Colors.cyan,
-          width: 2.0, // Border thickness
+          width: 2.0,
         ),
         borderRadius: BorderRadius.circular(8.0),
       ),
       child: ListTile(
         title: Text(title),
-        onTap: () {
-          // Add your onTap logic here
-        },
+        onTap: () {},
       ),
     );
   }

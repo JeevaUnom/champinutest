@@ -12,13 +12,13 @@ class GoalPage extends StatelessWidget {
           title: const Text('Assign Goals'),
           bottom: const TabBar(tabs: [
             Tab(
-              text: ' Technical Goal',
+              text: ' Technical',
             ),
             Tab(
-              text: ' Tactical Goal',
+              text: ' Tactical',
             ),
             Tab(
-              text: ' Psychological Goal',
+              text: ' Psychological',
             ),
           ]),
         ),
