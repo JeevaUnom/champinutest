@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "741276340184",
+    "project_id": "champinutest",
+    "storage_bucket": "champinutest.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:741276340184:android:a2c00508064c0921b2acad",
+        "android_client_info": {
+          "package_name": "com.example.champinutest"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBtAPXwE7cS2ZSCUtJeEMMZkfPxROifkEQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

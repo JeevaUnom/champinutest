@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 // import '../sidebar/sidebar_goals.dart';
@@ -116,7 +118,7 @@ class MatchReport extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                   builder: (context) => const ReportPage(
-                      reportType: 'date_report',
+                      reportType: 'data_report',
                       reportTitle: 'Match Analysis Report'),
                 ),
               );
@@ -146,7 +148,7 @@ class _ReportPageState extends State<ReportPage> {
   String? dropdownValue1;
   String? dropdownValue2;
   var matchCounts = ['5', '10', '15', '20', '25'];
-  var players = ['Player 1', 'Player 2', 'Player 3'];
+  var players = ['Harry', 'Vasee', 'Yasin'];
   var reportOptions = [
     'Winner, UFE, FE situations',
     'Games Won After Trailing',
@@ -164,6 +166,7 @@ class _ReportPageState extends State<ReportPage> {
 
     final DateTime firstDate =
         isFromDate ? DateTime(2024) : (fromDate ?? DateTime(2024));
+        
     final DateTime lastDate =
         isFromDate ? (toDate ?? DateTime.now()) : DateTime.now();
 
@@ -202,8 +205,8 @@ class _ReportPageState extends State<ReportPage> {
         return _buildMatchCountDropdown();
       case 'player_name':
         return _buildPlayerDropdown();
-      case 'date_report':
-        return _buildDateAndReportSelector();
+      case 'data_report':
+        return _buildDataReportSelector();
       default:
         return const Center(child: Text('No records to show'));
     }
@@ -276,7 +279,7 @@ class _ReportPageState extends State<ReportPage> {
     );
   }
 
-  Widget _buildDateAndReportSelector() {
+  Widget _buildDataReportSelector() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [

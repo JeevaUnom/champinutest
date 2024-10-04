@@ -227,7 +227,7 @@ class _NavItemState extends State<NavItem> {
             content: const Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text(''),
+                Text('Rally Tracker: Used to show the ball track'),
                 Text(''),
                 Text(''),
                 Text(''),
@@ -333,10 +333,11 @@ class _NavItemState extends State<NavItem> {
             content: const Column(
               mainAxisSize: MainAxisSize.min,
               children: [
+                Text('Match Reports: Summary of your match '),
                 Text(''),
-                Text(''),
-                Text(''),
-                Text(''),
+                Text(
+                    'Self Assessment Report: Rate of your exercise completeness '),
+                Text('LeaderBoard: List of player details'),
               ],
             ),
             actions: <Widget>[
@@ -367,8 +368,7 @@ class _NavItemState extends State<NavItem> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const ScoreTracker(
-                            ),
+                        builder: (context) => const ScoreTracker(),
                       ),
                     );
                   },
@@ -416,7 +416,8 @@ class _NavItemState extends State<NavItem> {
             content: const Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text(''),
+                Text(
+                    'Match Preparation & Score Update: Used to update the score board'),
                 Text(''),
               ],
             ),
@@ -452,7 +453,7 @@ class _NavItemState extends State<NavItem> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body:const  Center(),
+      body: const Center(),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
